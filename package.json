@@ -1,0 +1,13 @@
+{
+  "name": "first_python_project",
+  "version": "1.0.0",
+  "main": "app.py",
+  "license": "MIT",
+  "scripts": {
+    "start": "py app.py"
+  },
+  "devDependencies": {
+    "@prettier/plugin-python": "0.0.0-development",
+    "prettier": "2.3.2"
+  }
+}
