@@ -1,5 +1,4 @@
 import sys
-import pyforms
 from pyforms.basewidget import BaseWidget
 from pyforms.controls import ControlText
 from pyforms.controls import ControlButton
@@ -19,10 +18,13 @@ class PersonCreateView(PersonModel, BaseWidget):
 
     self._buttonField.value = self.__buttonAction
 
+    self.formset = ['_firstNameField', '_middleNameField', '_lastNameField', 
+			'_fullNameField', (' ','_buttonField', ' '), ' ']
+
   def __buttonAction(self):
     self._firstName = self._firstNameField.value
     self._middleName = self._middleNameField.value
     self._lastName = self._lastNameField.value
-    self._fullNameField.value = self._fullName
+    self._fullNameField.value = self.fullName
 
     if self.parent != None: self.parent.addPerson(self)
