@@ -3,18 +3,21 @@ from pyforms.basewidget import BaseWidget
 from pyforms.controls import ControlList
 from controllers.personController import PersonController
 from views.person.create import PersonCreateView
-from components.topmenu.topmenu    import TopMenuComponent
-
+from components.topmenu.topmenu import TopMenuComponent
+from pyforms.controls import ControlDockWidget
 class PersonListView(TopMenuComponent, PersonController, BaseWidget):
     def __init__(self):
         PersonController.__init__(self)
         BaseWidget.__init__(self, 'List Person View')
+        TopMenuComponent.__init__(self)
+
+        self._panel = ControlDockWidget()
 
         self._personList = ControlList('Registered Person',
-            plusFunction = self.__addPersonBtnAction,
-            minusFunction = self.__rmPersonBtnAction)
+            add_function = self.__addPersonBtnAction,
+            remove_function = self.__rmPersonBtnAction)
 
-        self._personList.horizontalHeaders = ['First name', 'Middle name', 'Last name']
+        self._personList.horizontal_headers = ['First Name', 'Middle Name', 'Last Name']
 
     def addPerson(self, personCreateView):
         super(PersonListView, self).addPerson(personCreateView)
